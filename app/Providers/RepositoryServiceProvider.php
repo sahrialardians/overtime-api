@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
-use App\Repositories\EmployeeRepository;
-use App\Repositories\EmployeeInterface;
-use App\Services\EmployeeService;
-use App\Services\EmployeeServiceInterface;
+use App\Repositories\{
+    EmployeeRepository, EmployeeInterface,
+    OvertimeRepository, OvertimeRepositoryInterface
+};
+use App\Services\{
+    EmployeeService, EmployeeServiceInterface,
+    OvertimeService, OvertimeServiceInterface
+};
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -19,6 +23,9 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(EmployeeInterface::class, EmployeeRepository::class);
         $this->app->bind(EmployeeServiceInterface::class, EmployeeService::class);
+        
+        $this->app->bind(OvertimeRepositoryInterface::class, OvertimeRepository::class);
+        $this->app->bind(OvertimeServiceInterface::class, OvertimeService::class);
     }
 
     /**
