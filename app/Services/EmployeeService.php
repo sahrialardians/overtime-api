@@ -15,6 +15,21 @@ class EmployeeService implements EmployeeServiceInterface
 
     public function save($data)
     {
-        $this->employeeRepository->save($data);
+        
+        try {
+            $this->employeeRepository->save($data);
+
+            return response()->json([
+                'code' => 201,
+                'status' => true,
+                'message' => 'Succesfully created employee.'
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'code' => 500,
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 }
