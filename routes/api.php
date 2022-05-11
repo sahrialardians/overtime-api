@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\{EmployeeController, OvertimeController};
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +16,6 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::post('/employees', [EmployeeController::class, 'store']);
+Route::post('/overtimes', [OvertimeController::class, 'store']);
+Route::get('/overtime-pays/calculate', [OvertimeController::class, 'show']);
+
