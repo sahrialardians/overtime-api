@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Repositories\{
+    SettingRepository, SettingRepositoryInterface,
     EmployeeRepository, EmployeeInterface,
     OvertimeRepository, OvertimeRepositoryInterface
 };
 use App\Services\{
+    SettingService, SettingServiceInterface,
     EmployeeService, EmployeeServiceInterface,
     OvertimeService, OvertimeServiceInterface
 };
@@ -21,6 +23,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(SettingRepositoryInterface::class, SettingRepository::class);
+        $this->app->bind(SettingServiceInterface::class, SettingService::class);
+
         $this->app->bind(EmployeeInterface::class, EmployeeRepository::class);
         $this->app->bind(EmployeeServiceInterface::class, EmployeeService::class);
         
